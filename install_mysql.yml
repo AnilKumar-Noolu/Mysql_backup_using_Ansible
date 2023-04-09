@@ -1,0 +1,8 @@
+---
+- name: Install MySQL database server
+  hosts: localhost
+  tasks:
+    - name: INSTALL MYSQL-server
+      yum:
+        name: mysql-server
+        state: latest
