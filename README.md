@@ -21,3 +21,13 @@ ansible-playbook main.yml
 
 You can find the backup in the following location "/tmp/dump3.sql" and  a new S3 Bucket will be created too with the mysql dump in it.
 
+For creating user and database, we need to enter our password. Instead of passing password directly in the ansible playbook, we have used ansible-vault.
+
+```
+ansible-vault create vars/secret.yml
+mysql_root_password: mypassword
+ansible-playbook playbook.yml --ask-vault-pass
+```
+
+In the above way, we are not exposing our passowrds and confidential information anywhere on the playbook.
+
