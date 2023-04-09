@@ -1,0 +1,17 @@
+---
+- name: Install MySQL database server
+  hosts: localhost
+  vars_files:
+    - vars/secret.yml
+  tasks:
+    - name: INSTALL MYSQL-server
+      yum:
+        name: mysql-server
+        state: latest
+
+    - name: Create database
+      mysql_db:
+        name: mydatabase1
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
